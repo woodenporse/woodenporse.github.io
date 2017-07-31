@@ -1,5 +1,5 @@
-<%= form_with(model: video, local: true) do |form| %>
-  <% if video.errors.any? %>
+<%= form_with(model: @video, local: true) do |form| %>
+  <% if @video.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(video.errors.count, "error") %> prohibited this video from being saved:</h2>
 
@@ -12,15 +12,16 @@
   <% end %>
 
   <div class="input-field">
-    <%= form.text_field :wistia, id: :video_wistia %>
+    <%= form.text_field :wistia, id: :video_wistia, :placeholder => 'Link', :length => '10' %>
   </div>
 
   <div class="input-field">
-    <%= form.text_field :title :placeholder => 'Title', :length => '20' %>
+    <%= form.text_field :title, :placeholder => 'Title', :length => '20' %>
   </div>
 
   <div class="input-field">
-    <%= form.text_area :description, id: :video_description %>
+    <%= form.text_area :description, id: :video_description,
+      :placeholder => 'description', :class => 'materialize-textarea' %>
   </div>
 
   <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
